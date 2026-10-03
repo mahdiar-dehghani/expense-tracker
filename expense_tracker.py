@@ -19,7 +19,17 @@ def saving_expenses(expenses):
         json.dump(expenses, file, indent=2)
 
 def adding_expense(expenses):
-    money_ammount= float(input("Enter Ammount: "))
+    while True:
+
+        try:
+            money_ammount= float(input("Enter Ammount: "))
+            break
+        except ValueError:
+            print("----------------------------")
+            print("PLZ enter a number like 22.2, try again")
+            print("----------------------------")
+            
+
     category = input("Enter Category: ")
     description = input("Enter Description: ")
 
