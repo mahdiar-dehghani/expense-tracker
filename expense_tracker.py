@@ -18,6 +18,8 @@ def saving_expenses(expenses):
     with open(file_name, "w") as file:
         json.dump(expenses, file, indent=2)
 
+
+
 def adding_expense(expenses):
     while True:
 
@@ -54,6 +56,14 @@ def showing_expenses(expenses):
 
 
 
+def showing_total(expenses):
+    total_expenses=0
+    for expense in expenses:
+        total_expenses = total_expenses + expense["amount"]
+    print("The total amount is: $" + str(total_expenses))
+
+
+
 
 
 
@@ -62,15 +72,16 @@ def showing_expenses(expenses):
 def main():
     expenses = loading_expenses()
     while True:
-        print("\n1. Add your expense   2. List your expenses    3. Quit")
+        print("\n1. Add your expense   2. List your expenses    3. show total expenses    4. QUIT    ")
         user_choice = input("Enter your choice: ")
         if user_choice == "1":
             adding_expense(expenses)
         elif user_choice == "2":
             showing_expenses(expenses)
         elif user_choice == "3":
+            showing_total(expenses)
+        elif user_choice == "4":
             break
-
         else:
             print("Invalid choice")
 
